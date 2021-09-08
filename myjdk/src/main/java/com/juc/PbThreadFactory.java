@@ -56,8 +56,6 @@ public class PbThreadFactory implements ThreadFactory {
         daemoThread = daemo;
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s == null) ? Thread.currentThread().getThreadGroup() : s.getThreadGroup();
-
-
         if (inputSize > 0){
             semaphore = new Semaphore(inputSize);
         }
