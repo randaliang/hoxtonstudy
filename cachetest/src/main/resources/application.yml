@@ -1,0 +1,25 @@
+jetcache:
+  areaInCacheName: false
+  local:
+    default:
+      keyConvertor: fastjson
+      type: linkedhashmap
+  remote:
+    default:
+      host: 172.16.101.55
+      keyConvertor: fastjson
+      poolConfig:
+        maxIdle: 20
+        maxTotal: 50
+        minIdle: 5
+      port: 6379
+      type: redis
+      valueDecoder: java
+      valueEncoder: java
+  statIntervalMinutes: 1
+
+
+  redis:
+    host: 172.16.101.55
+    port: 6379
+    password: ctjsoft123
