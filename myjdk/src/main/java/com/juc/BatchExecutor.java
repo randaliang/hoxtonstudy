@@ -31,7 +31,14 @@ public class BatchExecutor<T> {
         }
 
         try {
-            poolExecutor.invokeAll( batchExeCallBack.getTask(t));
+            while(true){
+                poolExecutor.invokeAll( batchExeCallBack.getTask(t));
+                if(batchExeCallBack.afterComplete(null)){
+                    break;
+                }
+            }
+
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
@@ -44,6 +51,6 @@ public class BatchExecutor<T> {
 
 interface BatchExeCallBack<M>{
     public Collection<? extends Callable<M>> getTask( Object obj );
-    public void afterComplete(Object obj);
+    public boolean afterComplete(Object obj);
 
 }
