@@ -12,6 +12,16 @@ public class BatchExecutor<T> {
             0L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<Runnable>());
 
+
+    public ThreadPoolExecutor detailExecutor = new ThreadPoolExecutor(5, 5,
+            0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>());
+
+
+    public void submmit( Object o  ){
+//        poolExecutor.submit(null);
+    }
+
     Semaphore cacheSizeSemaphore = null;
 
     boolean isOverRefuse = false;
@@ -53,4 +63,14 @@ interface BatchExeCallBack<M>{
     public Collection<? extends Callable<M>> getTask( Object obj );
     public boolean afterComplete(Object obj);
 
+}
+
+class MyRun<T> implements Runnable{
+    BatchExeCallBack batchExeCallBack;
+    T t;
+
+    @Override
+    public void run() {
+
+    }
 }

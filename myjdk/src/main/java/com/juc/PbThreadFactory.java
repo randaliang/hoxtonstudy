@@ -56,20 +56,15 @@ public class PbThreadFactory implements ThreadFactory {
         daemoThread = daemo;
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s == null) ? Thread.currentThread().getThreadGroup() : s.getThreadGroup();
-        if (inputSize > 0){
-            semaphore = new Semaphore(inputSize);
-        }
+
     }
 
     @Override
     public Thread newThread(Runnable runnable) {
-        if(semaphore == null){
-            String name = prefix + mThreadNum.getAndIncrement();
-            Thread ret = new Thread(threadGroup, runnable, name, 0);
-            ret.setDaemon(daemoThread);
-            return ret;
-        }
-        return null;
+        String name = prefix + mThreadNum.getAndIncrement();
+        Thread ret = new Thread(threadGroup, runnable, name, 0);
+        ret.setDaemon(daemoThread);
+        return ret;
     }
 }
 
