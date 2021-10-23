@@ -30,16 +30,16 @@ public class ProcessorMonitor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if(scanDir == null){
-            scanDir = "com.ctj";
-        }
-        if( !bean.getClass().getPackage().getName().startsWith(scanDir)) {
-            return bean;
-        }
-        RequestMapping m =bean.getClass().getAnnotation(RequestMapping.class);
-        if( m != null && m.value().length>0){
-            pathList.add(m.value()[0]);
-        }
+//        if(scanDir == null){
+//            scanDir = "com.ctj";
+//        }
+//        if( !bean.getClass().getPackage().getName().startsWith(scanDir)) {
+//            return bean;
+//        }
+//        RequestMapping m =bean.getClass().getAnnotation(RequestMapping.class);
+//        if( m != null && m.value().length>0){
+//            pathList.add(m.value()[0]);
+//        }
         return bean;
     }
 }
