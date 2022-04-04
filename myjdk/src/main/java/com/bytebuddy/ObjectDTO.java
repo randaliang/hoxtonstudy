@@ -92,7 +92,7 @@ public class ObjectDTO implements Serializable{
 	}
 	
 	public String getObj_source() {
-		return "222";
+		return obj_source;
 	}
 	public void setObj_source(String objSource) {
 		obj_source = objSource+"rdl";

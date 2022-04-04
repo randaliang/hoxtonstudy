@@ -26,6 +26,7 @@ public class ByteBuddyTest {
 
         System.out.println(o.getObj_source());
 
+//        ByteBuddyAgent.install();
 //        new ByteBuddy()
 //                .redefine(ObjectDTO.class)
 //                .method(ElementMatchers.named("getObj_source"))
@@ -45,3 +46,15 @@ public class ByteBuddyTest {
     }
 }
 
+class B implements Implementation{
+
+    @Override
+    public ByteCodeAppender appender(Target target) {
+        return null;
+    }
+
+    @Override
+    public InstrumentedType prepare(InstrumentedType instrumentedType) {
+        return null;
+    }
+}
